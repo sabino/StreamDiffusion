@@ -24,6 +24,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python3-dev \
         python3-pip \
         libglib2.0-0 \
+        x11-apps \
+        python3-tk \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
     && ln -s /usr/bin/python3 /usr/bin/python
 
@@ -48,6 +50,8 @@ RUN pip3 install -r /streamdiffusion/requirements-tensorrt-cu12.txt
 
 # Install StreamDiffusion with TensorRT support
 RUN python setup.py develop easy_install streamdiffusion[tensorrt]
+
+RUN 
 
 # Set the final working directory
 WORKDIR /home/ubuntu/streamdiffusion
