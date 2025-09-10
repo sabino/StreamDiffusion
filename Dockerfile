@@ -43,12 +43,12 @@ RUN pip3 install \
 COPY . /streamdiffusion
 WORKDIR /streamdiffusion
 
-# Proactively pin dependencies to prevent build errors
-RUN pip install "numpy<2.0" "huggingface-hub<0.22.0"
+# STEP 1: Install complex NVIDIA dependencies from our requirements file
+COPY requirements-tensorrt-cu12.txt .
+RUN pip3 install -r requirements-tensorrt-cu12.txt
 
 # Install StreamDiffusion with TensorRT support
-RUN python setup.py develop easy_install streamdiffusion[tensorrt] \
-    && python -m streamdiffusion.tools.install-tensorrt
+RUN python setup.py develop easy_install streamdiffusion[tensorrt]
 
 # Set the final working directory
 WORKDIR /home/ubuntu/streamdiffusion

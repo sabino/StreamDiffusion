@@ -1,0 +1,17 @@
+# Pinned dependencies for stability
+numpy<2.0
+huggingface-hub<0.22.0
+transformers==4.40.2
+
+# Extra PyPI indexes needed for NVIDIA packages
+--extra-index-url https://pypi.nvidia.com
+--extra-index-url https://pypi.ngc.nvidia.com
+
+# TensorRT and its dependencies for CUDA 12
+nvidia-cudnn-cu12==8.9.4.25
+tensorrt==9.0.1.post12.dev4
+polygraphy==0.47.1
+onnx-graphsurgeon==0.3.26
+
+# Windows-specific dependency
+pywin32==306; sys_platform == 'win32'
