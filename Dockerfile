@@ -44,7 +44,6 @@ COPY . /streamdiffusion
 WORKDIR /streamdiffusion
 
 # STEP 1: Install complex NVIDIA dependencies from our requirements file
-COPY requirements-tensorrt-cu12.txt .
 RUN pip3 install -r requirements-tensorrt-cu12.txt
 
 # Install StreamDiffusion with TensorRT support
